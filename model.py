@@ -106,7 +106,7 @@ class FPN(nn.Module):  #FPN主要解决的是物体检测中的多尺度问题�
         p4 = self._upsample_add(p5, self.latlayer2(c4))  # 变成一样大小，方便融合
         p4 = self.toplayer1(p4)
         p3 = self._upsample_add(p4, self.latlayer3(c3))
-        p3 = self.toplayer2(p3)
+        p3 = self.toplayer2(p3)  #足够低层的特征对于检测小物体是很有帮助的
         return p3, p4, p5, p6, p7  # 这里的p3，p4都是融合深层的特征图的
 
 def FPN50():
